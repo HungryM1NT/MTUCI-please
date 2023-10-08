@@ -1,0 +1,96 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mtuci Please</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Mtuci Please</h1>
+        {% if user.is_authenticated %}
+            <form action="{% url 'users:logout' %}">
+                <button class="loginButton" type="submit">Logout</button>
+            </form>
+        {% else %}
+            <button class="loginButton" id="show-login-popup">Login</button>
+        {% endif %}
+    </header>
+    {% if user.is_authenticated %}
+    {% else %}
+        <div class="overlay" id="login-popup"
+             style="{% if login_form.errors %} display:flex
+             {% elif registration_form.errors %} display:flex {% endif %}">
+            <div class="popup-container" id="login-container">
+                <form method="post" id="form-register"
+                      style="{% if registration_form.errors %} display:inline {% else %} display:none {% endif %}"
+                      action="{% url 'users:registration' %}">
+                    {% csrf_token %}
+                    <h2>Sign up</h2>
+                    <div class="error-field">
+                        {% for f in registration_form %}
+                            {% for e in f.errors %}
+                                <div>{{ e }}</div>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                    <div class="form-field">
+                        {{ registration_form.username }}
+                    </div>
+                    <div class="form-field">
+                        {{ registration_form.email }}
+                    </div>
+                    <div class="form-field">
+                        {{ registration_form.password1 }}
+                    </div>
+                    <div class="form-field">
+                        {{ registration_form.password2 }}
+                    </div>
+                    <div class="form-field">
+                        <button id="register-submit" class="edit">Sign up</button>
+                    </div>
+                    <div class="form-field">
+                        <button class="switch-button" type="button" id="login-link">To Login</button>
+                    </div>
+                </form>
+                <form method="post" id="form-login"
+                      style="{% if registration_form.errors %} display:none {% else %} display:inline {% endif %}"
+                      action="{% url 'users:login' %}">
+                    {% csrf_token %}
+                    <h2>Login</h2>
+                    <div class="error-field">
+                        {% if login_form.non_field_errors %}
+                            Wrong login or password.
+                        {% endif %}
+                    </div>
+                    <div class="form-field">
+                        {{ login_form.username }}
+                    </div>
+                    <div class="form-field">
+                        {{ login_form.password }}
+                    </div>
+                    <div class="form-field">
+                        <button id="login-submit" class="edit">Login</button>
+                    </div>
+                    <div class="form-field">
+                        <button class="switch-button" type="button" id="register-link">To Sign up</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {% endif %}
+    <main>
+        <div class="startButton">
+            <button class="mainButton"> Start</button>
+        </div>
+        <div class="leaderboardButton">
+            <button class="mainButton">Leaderboard</button>
+        </div>
+    </main>
+
+    <script src="{% static 'js/popup.js' %}"></script>
+</body>
+</html>

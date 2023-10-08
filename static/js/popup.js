@@ -1,7 +1,6 @@
 authShow('form-login', 'form-register', 'switch-button')
 
 initializePopup('login-popup', 'show-login-popup');
-initializePopup('note-popup', 'show-note-popup', 'note-cancel');
 
 // add fields cleaning after closing
 

@@ -5,10 +5,10 @@ from users.models import User
 
 class UserLoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
-        # Параметры будущей формы логина
+        'placeholder': "Username",
     }))
     password = forms.CharField(widget=forms.PasswordInput(attrs={
-        # Параметры будущей формы пароля
+        'placeholder': "Password",
     }))
 
     class Meta:
@@ -18,14 +18,18 @@ class UserLoginForm(AuthenticationForm):
 
 class UserRegistrationForm(UserCreationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
-        # Параметры будущей формы логина
+        'placeholder': "Username",
     }))
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={
-        # Параметры будущей формы пароля
+        'placeholder': "Password",
     }))
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={
-        # Параметры будущей формы пароля х2
+        'placeholder': "Confirm password",
     }))
+
+    class Meta:
+        model = User
+        fields = ['username', 'password1', 'password2']
 
 
     class Meta:

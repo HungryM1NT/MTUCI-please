@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from main_page.models import Person
+from users.forms import UserLoginForm, UserRegistrationForm
 
 
 def index(request):
     context = {
-        'persons': Person.objects.all()
+        'login_form': UserLoginForm(),
+        'registration_form': UserRegistrationForm(),
     }
-    return render(request, 'main_page/testindex.html', context)
+    return render(request, 'main_page/index.html', context)
