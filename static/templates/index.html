@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mtuci Please</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Mtuci Please</h1>
+        <button class="loginButton" id="show-login-popup">Login</button>
+    </header>
+    <div class="overlay" id="login-popup">
+        <div class="popup-container" id="login-container">
+            <form method="post" id="form-register" style="display: none;" action="todo_list">
+                <h2>Register</h2>
+                <div>
+                    <input type="text" id="register-username" placeholder="Username">
+                </div>
+                <div>
+                    <input type="password" id="register-password" placeholder="Password">
+                </div>
+                <div>
+                    <input type="password" id="register-confirm-password" placeholder="Confirm password">
+                </div>
+                <div>
+                    <button id="register-submit" class="edit">Sign up</button>
+                </div>
+                <div>
+                    <button class="switch-button" type="button" id="login-link">To Sign in</button>
+                </div>
+            </form>
+            <form method="post" id="form-login" action="todo_list">
+                <h2>Login</h2>
+                <div>
+                    <input type="text" id="login-username" placeholder="Username">
+                </div>
+                <div>
+                    <input type="password" id="login-password" placeholder="Password">
+                </div>
+                <div>
+                    <button id="login-submit" class="edit">Sign in</button>
+                </div>
+                <div>
+                    <button class="switch-button" type="button" id="register-link">To Sign up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <main>
+        <div class="startButton">
+            <button class="mainButton"> Start</button>
+        </div>
+        <div class="leaderboardButton">
+            <button class="mainButton">Leaderboard</button>
+        </div>
+    </main>
+
+    <script src="../js/popup.js"></script>
+</body>
+</html>
