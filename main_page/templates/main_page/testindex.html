@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for person in persons %}
+        <div>
+            <img src="{{ person.photo.url }}">
+        </div>
+        <div>
+            <a> {{ person.surname }}</a>
+        </div>
+        <div>
+            <a> {{ person.name }}</a>
+        </div>
+            <div>
+            <a> {{ person.middle_name }}</a>
+        </div>
+    {% endfor %}
+</body>
+</html>
