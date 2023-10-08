@@ -84,7 +84,9 @@
     {% endif %}
     <main>
         <div class="startButton">
-            <button class="mainButton"> Start</button>
+            <form action="{% url 'first_level:first_level' %}">
+                <button class="mainButton"> Start</button>
+            </form>
         </div>
         <div class="leaderboardButton">
             <button class="mainButton">Leaderboard</button>

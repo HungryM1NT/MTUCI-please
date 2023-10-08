@@ -1,5 +1,6 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
 
 
 def first_level(request):
-    return render(request, 'first_level/first_level.html')
+    return redirect('http://localhost:5173/')
